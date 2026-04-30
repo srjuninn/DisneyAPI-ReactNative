@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image, StyleSheet, TextInput } from "react-native";
 import api from "../services/api";
 import { colors, typography, spacing } from "../styles/global";
 
 export default function Home({ navigation }) {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState("");
 
+    // Busca inicial
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
@@ -22,12 +24,35 @@ export default function Home({ navigation }) {
         fetchCharacters();
     }, []);
 
+    // Busca dinâmica conforme digita
+    const handleSearch = async (text) => {
+        setSearchTerm(text);
+        if (text.length > 2) {
+            try {
+                const response = await api.get(`/character?name=${text}`);
+                setCharacters(response.data.data);
+            } catch (error) {
+                console.error("Erro na busca:", error);
+            }
+        }
+    };
+
     if (loading) {
         return <ActivityIndicator size="large" color={colors.secondary} style={{ flex: 1 }} />;
     }
 
     return (
         <View style={styles.container}>
+            {/* SearchBar */}
+            <TextInput
+                style={styles.searchBar}
+                placeholder="Buscar personagem..."
+                placeholderTextColor={colors.text}
+                value={searchTerm}
+                onChangeText={handleSearch}
+            />
+
+            {/* Lista de personagens */}
             <FlatList
                 data={characters}
                 keyExtractor={(item) => item._id}
@@ -45,14 +70,24 @@ export default function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: colors.background },
+    container: { flex: 1, backgroundColor: colors.background, padding: spacing.small },
+    searchBar: {
+        backgroundColor: colors.white,
+        borderRadius: 8,
+        padding: spacing.small,
+        marginBottom: spacing.medium,
+        fontSize: 16,
+        color: colors.text,
+        borderWidth: 1,
+        borderColor: colors.secondary,
+    },
     card: {
         flexDirection: "row",
         alignItems: "center",
-        margin: spacing.medium,
+        marginBottom: spacing.medium,
         backgroundColor: colors.white,
         padding: spacing.small,
         borderRadius: 8,
     },
-    image: { width: 60, height: 60, borderRadius: 30, marginRight: 15 }, // gap maior
+    image: { width: 60, height: 60, borderRadius: 30, marginRight: 15 },
 });
