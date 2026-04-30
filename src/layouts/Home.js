@@ -54,5 +54,5 @@ const styles = StyleSheet.create({
         padding: spacing.small,
         borderRadius: 8,
     },
-    image: { width: 60, height: 60, borderRadius: 30 },
+    image: { width: 60, height: 60, borderRadius: 30, marginRight: 15 }, // gap maior
 });
