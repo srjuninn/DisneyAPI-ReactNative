@@ -1,8 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import Home from "../layouts/Home";
 import LayoutDetails from "../layouts/details/LayoutDetails";
+import Favorites from "../layouts/Favorites";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,18 +15,17 @@ export default function AppNavigator() {
                 <Stack.Screen
                     name="Home"
                     component={Home}
-                    options={{
-                        title: "Disney Characters",
-                        headerTitleAlign: "center"
-                    }}
+                    options={{ title: "Disney Characters", headerTitleAlign: "center" }}
                 />
                 <Stack.Screen
                     name="Details"
                     component={LayoutDetails}
-                    options={{
-                        title: "Detalhes",
-                        headerTitleAlign: "center"
-                    }}
+                    options={{ title: "Detalhes", headerTitleAlign: "center" }}
+                />
+                <Stack.Screen
+                    name="Favorites"
+                    component={Favorites}
+                    options={{ title: "Favoritos", headerTitleAlign: "center" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
