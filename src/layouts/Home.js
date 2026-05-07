@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image, StyleSheet, TextInput } from "react-native";
+import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image, StyleSheet, TextInput, Button } from "react-native";
 import api from "../services/api";
 import { colors, typography, spacing } from "../styles/global";
 
@@ -52,6 +52,10 @@ export default function Home({ navigation }) {
                 onChangeText={handleSearch}
             />
 
+            <View style={styles.favoritesButton}>
+                <Button title="Ir para Favoritos" color={colors.secondary} onPress={() => navigation.navigate("Favorites")} />
+            </View>
+
             {/* Lista de personagens */}
             <FlatList
                 data={characters}
@@ -80,6 +84,9 @@ const styles = StyleSheet.create({
         color: colors.text,
         borderWidth: 1,
         borderColor: colors.secondary,
+    },
+    favoritesButton: {
+        marginBottom: spacing.medium,
     },
     card: {
         flexDirection: "row",
