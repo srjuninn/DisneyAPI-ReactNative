@@ -483,17 +483,17 @@ npm run web
 
 ### Checklist de Testes
 
-- [ ] App inicia sem erros
-- [ ] Lista de personagens carrega corretamente
-- [ ] Busca funciona em tempo real (3+ caracteres)
-- [ ] Detalhes do personagem exibem corretamente
-- [ ] Botão "Favoritar" salva localmente
-- [ ] Tela de Favoritos exibe itens salvos
-- [ ] Remover favorito funciona
-- [ ] App adapta em orientação portrait e landscape
-- [ ] ActivityIndicator aparece durante carregamento
-- [ ] Mensagens de erro aparecem se API falhar
-- [ ] SafeAreaView previne sobreposição com status bar
+- ✅ App inicia sem erros
+- ✅ Lista de personagens carrega corretamente
+- ✅ Busca funciona em tempo real (3+ caracteres)
+- ✅ Detalhes do personagem exibem corretamente
+- ✅ Botão "Favoritar" salva localmente
+- ✅ Tela de Favoritos exibe itens salvos
+- ✅ Remover favorito funciona
+- ✅ App adapta em orientação portrait e landscape
+- ✅ ActivityIndicator aparece durante carregamento
+- ✅ Mensagens de erro aparecem se API falhar
+- ✅ SafeAreaView previne sobreposição com status bar
 
 ### Validação em Diferentes Dispositivos
 
