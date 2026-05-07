@@ -2,7 +2,7 @@
   "buildCommand": "expo export --platform web",
   "outputDirectory": "dist",
   "env": {
-    "EXPO_PUBLIC_API_URL": "@expo_public_api_url"
+    "EXPO_PUBLIC_API_URL": "https://api.disneyapi.dev"
   },
   "rewrites": [
     {
