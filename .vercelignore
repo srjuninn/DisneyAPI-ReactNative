@@ -1,0 +1,10 @@
+node_modules
+.expo
+.git
+.gitignore
+README.md
+*.log
+.env.local
+.DS_Store
+android
+ios
